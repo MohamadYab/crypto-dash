@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router";
+import Header from "./components/Header";
 import HomePage from "./pages/Home";
 import AboutPage from "./pages/About";
 
@@ -29,18 +30,21 @@ function App() {
   }, [limit]);
 
   return (
-    <Routes>
-      <Route path="/" element={ <HomePage 
-        loading={loading}
-        error={error}
-        coins={coins}
-        filter={filter}
-        setFilter={setFilter}
-        limit={limit}
-        setLimit={setLimit}
-      /> } />
-      <Route path="/about" element={ <AboutPage /> } />
-    </Routes>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={ <HomePage 
+          loading={loading}
+          error={error}
+          coins={coins}
+          filter={filter}
+          setFilter={setFilter}
+          limit={limit}
+          setLimit={setLimit}
+        /> } />
+        <Route path="/about" element={ <AboutPage /> } />
+      </Routes>
+    </>
   )
 }
 
