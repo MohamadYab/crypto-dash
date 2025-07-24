@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router"
 import { useState, useEffect } from "react";
+import CoinChart from "../components/CoinChart";
 
 const API_URL = import.meta.env.VITE_COIN_API_URL;
 
@@ -17,7 +18,7 @@ function CoinDetailsPage() {
         const data = await response.json();
         setCoin(data);
       } catch (error) {
-        setError(error);
+        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -54,6 +55,7 @@ function CoinDetailsPage() {
               {coin.market_data.market_cap.usd.toLocaleString('en-US')}
             </h4>
           </div>
+          <CoinChart coinId={id} />
         </>
       )}
     </div>
