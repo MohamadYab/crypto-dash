@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router";
 import Header from "./components/Header";
 import HomePage from "./pages/Home";
 import AboutPage from "./pages/About";
+import CoinDetailsPage from "./pages/CoinDetails";
 import NotFoundPage from "./pages/NotFound";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -44,6 +45,7 @@ function App() {
           setLimit={setLimit}
         /> } />
         <Route path="/about" element={ <AboutPage /> } />
+        <Route path="/coin/:id" element={ <CoinDetailsPage /> } />
         <Route path="*" element={ <NotFoundPage /> } />
       </Routes>
     </>
