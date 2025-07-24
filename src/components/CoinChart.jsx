@@ -11,6 +11,7 @@ import {
   TimeScale
 } from "chart.js";
 import "chartjs-adapter-date-fns";
+import Spinner from "./Spinner";
 
 ChartJS.register(
   CategoryScale,
@@ -46,7 +47,7 @@ function CoinChart({ coinId }) {
             {
               label: "Price (USD)",
               data: prices,
-              fill: true,
+              fill: false,
               borderColor: "#007bff",
               backgroundColor: "rgba(0, 123, 255, 0.1)",
               pointRadius: 0,
@@ -64,7 +65,7 @@ function CoinChart({ coinId }) {
     fetchPrices();
   }, [coinId]);
 
-  if (loading) return <p>Loading Chart...</p>
+  if (loading) return <Spinner />
   if (error) return <div className="error">{error}</div>
 
   return (

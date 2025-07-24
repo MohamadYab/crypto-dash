@@ -1,6 +1,7 @@
 import CoinCard from "../components/CoinCard";
 import LimitSelector from "../components/LimitSelector";
 import FilterInput from "../components/FilterInput";
+import Spinner from "../components/Spinner";
 
 function HomePage({
   loading,
@@ -22,7 +23,7 @@ function HomePage({
       <h1>Crypto Dash</h1>
       {
         loading ? (
-          <p>Loading...</p>
+          <Spinner />
         ) : error ? (
           <div className="error">{error}</div>
         ) : (
