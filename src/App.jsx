@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import CoinCard from "./components/CoinCard";
-import LimitSelector from "./components/LimitSelector";
-import FilterInput from "./components/FilterInput";
+import { Routes, Route } from "react-router";
+import HomePage from "./pages/Home";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -28,42 +27,18 @@ function App() {
     fetchCoins();
   }, [limit]);
 
-  const filteredCoins = coins.filter((coin) => {
-    return coin.name.toLowerCase().includes(filter.toLowerCase()) ||
-      coin.symbol.toLowerCase().includes(filter.toLowerCase())
-  });
-
   return (
-    <div>
-      <h1>Crypto Dash</h1>
-      {
-        loading ? (
-          <p>Loading...</p>
-        ) : error ? (
-          <div className="error">{error}</div>
-        ) : (
-          <>
-            <div className="top-controls">
-              <FilterInput
-                placeholder=""
-                value={filter}
-                onChange={setFilter}
-              />
-              <LimitSelector limit={limit} onChange={setLimit} />
-            </div>
-            <main className="grid">
-              { filteredCoins.length > 0 ? (
-                  filteredCoins.map((coin) => (
-                    <CoinCard key={coin.id} coin={coin} />
-                  ))
-              ) : (
-                <p>No Matching Coins</p>
-              )}
-            </main>
-          </>
-        )
-      }
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage 
+        loading={loading}
+        error={error}
+        coins={coins}
+        filter={filter}
+        setFilter={setFilter}
+        limit={limit}
+        setLimit={setLimit}
+      />} />
+    </Routes>
   )
 }
 
