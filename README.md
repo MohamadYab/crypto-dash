@@ -1,9 +1,3 @@
-<style>
-  th, td {
-    border: 1px solid black;
-    padding: 8px;
-  }
-</style>
 # Crypto Dash App
 <table>
   <thead>
