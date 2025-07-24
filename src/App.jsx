@@ -18,10 +18,8 @@ function App() {
         const response = await fetch(`${API_URL}&order=market_cap_desc&per_page=${limit}&page=1&sparkline=false`);
         if (!response.ok) throw new Error('Failed to fetch data');
         const data = await response.json();
-        console.log(data);
         setCoins(data);
       } catch (error) {
-        console.error(error.message);
         setError(error.message);
       } finally {
         setLoading(false);
