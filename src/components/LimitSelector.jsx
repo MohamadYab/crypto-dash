@@ -6,7 +6,7 @@ function LimitSelector({ limit, onChange }) {
       <label htmlFor="limit">Show: </label>
       <select name="limit" id="limit"
         value={limit}
-        onChange={onChange}
+        onChange={(e) => onChange(e.target.value)}
       >
         <option value="5">5</option>
         <option value="10">10</option>
